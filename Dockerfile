@@ -17,6 +17,7 @@ COPY . .
 # Expose Railway port
 ENV PORT=3000
 EXPOSE 3000
-
+# Start Node with inspect port open
+CMD ["node", "--inspect=0.0.0.0:9229", "index.js"]
 # Start the bot
 CMD ["node", "index.js"]
