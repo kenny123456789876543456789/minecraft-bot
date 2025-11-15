@@ -1,0 +1,21 @@
+# Use official Node 18 Debian image
+FROM node:18
+
+# Set working directory
+WORKDIR /app
+
+# Copy only package files first for caching
+COPY package*.json ./
+
+# Install dependencies using modern best practice
+RUN npm ci
+
+# Copy the rest of the code
+COPY . .
+
+# Expose Railway port
+ENV PORT=3000
+EXPOSE 3000
+
+# Start the bot
+CMD ["node", "index.js"]
