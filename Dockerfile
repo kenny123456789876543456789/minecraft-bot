@@ -7,8 +7,9 @@ WORKDIR /app
 # Copy only package files first for caching
 COPY package*.json ./
 
-# Install dependencies using modern best practice
-RUN npm ci
+# Install dependencies (works without lockfile)
+RUN npm install
+
 
 # Copy the rest of the code
 COPY . .
