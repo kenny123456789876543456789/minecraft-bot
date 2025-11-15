@@ -1,3 +1,16 @@
+// Debug startup: check current folder and files
+const fs = require('fs');
+console.log('=== Debug: Container Startup ===');
+console.log('Current working directory:', process.cwd());
+
+try {
+    const files = fs.readdirSync('.');
+    console.log('Files in root folder:', files);
+} catch (err) {
+    console.error('Error reading current folder:', err);
+}
+console.log('=== End Debug ===\n');
+
 const mineflayer = require('mineflayer');
 const express = require('express');
 
